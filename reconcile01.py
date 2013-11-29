@@ -13,11 +13,25 @@ try:
 # https://secure.simplistix.co.uk/svn/xlrd/trunk/xlrd/doc/xlrd.html?p=4966#sheet.Cell-class
 
     for i in sheet.col(12):
-        serial = str(i.value)
-        serial = serial.strip()
+        if i.ctype == 0:
+            serial = "EMPTY!!!"
+        elif i.ctype == 1:
+            serial = i.value.strip()
+        elif i.ctype == 2 or i.cytpe == 3:
+            serial = i.value
+            if serial < 0 :
+                serial = serial * (-1)
+#                serial = str(serial)
+            serial = int(serial)
+            serial = str(serial)
+
+#        serial = i.value
+            
+#        serial = str(i.value)
+#        serial = serial.strip()
         what_type = i.ctype
         print(serial)
-        print(what_type)
+#        print(what_type)
 
 except IOError:
     print('The data file is missing')
