@@ -11,6 +11,7 @@ try:
 
 #    print(sheet.col(0))
 # https://secure.simplistix.co.uk/svn/xlrd/trunk/xlrd/doc/xlrd.html?p=4966#sheet.Cell-class
+    serials_supported = []
 
     for i in sheet.col(12):
         if i.ctype == 0:
@@ -25,12 +26,14 @@ try:
             serial = int(serial)
             serial = str(serial)
 
+            serials_supported.append(serial)
 #        serial = i.value
             
 #        serial = str(i.value)
 #        serial = serial.strip()
         what_type = i.ctype
-        print(serial)
+#        print(serial)
+        print(serials_supported)
 #        print(what_type)
 
 except IOError:
